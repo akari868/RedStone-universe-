@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RedStone AI Hub Admin Panel - Quiz Review & Approval">
+    <title>RedStone AI Hub Admin Panel</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="logo 1.png">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ai-hub.css">
+    <link rel="stylesheet" href="dashboard.css">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="admin-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="logo 1.png" alt="RedStone" class="nav-logo">
+                <span class="nav-title">RedStone <span class="admin-text">Admin Panel</span></span>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-arrow-left"></i> Back to Main Portal
+                </a>
+                <a href="#users" class="nav-link"><i class="fas fa-users"></i> Users</a>
+                <a href="#content" class="nav-link"><i class="fas fa-edit"></i> Content</a>
+                <a href="#settings" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+                <a href="communication-center.html" class="nav-link"><i class="fas fa-comments"></i> Communication Hub</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-ai">
+        <div class="hero-content">
+            <h1 class="hero-title">Admin <span class="gradient-text">Panel</span></h1>
+            <p class="hero-subtitle">Review and manage AI-generated content</p>
+        </div>
+    </section>
+
+    <!-- Quiz Review Section -->
+    <section class="quiz-review">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-question-circle"></i> Quiz Review & Approval</h2>
+                <p class="section-subtitle">Review AI generated quizzes before they go live</p>
+            </div>
+            
+            <div class="review-controls">
+                <div class="filter-controls">
+                    <select id="statusFilter">
+                        <option value="all">All Statuses</option>
+                        <option value="pending">Pending Review</option>
+                        <option value="approved">Approved</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+                    <select id="difficultyFilter">
+                        <option value="all">All Difficulties</option>
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+                
+                <div class="action-controls">
+                    <button class="btn btn-primary" id="approveAllBtn">
+                        <i class="fas fa-check-circle"></i> Approve All
+                    </button>
+                    <button class="btn btn-secondary" id="rejectAllBtn">
+                        <i class="fas fa-times-circle"></i> Reject All
+                    </button>
+                </div>
+            </div>
+            
+            <div class="quiz-list-container">
+                <div class="quiz-list-header">
+                    <div class="quiz-list-col">Question</div>
+                    <div class="quiz-list-col">Difficulty</div>
+                    <div class="quiz-list-col">Source</div>
+                    <div class="quiz-list-col">Status</div>
+                    <div class="quiz-list-col">Actions</div>
+                </div>
+                
+                <div class="quiz-list" id="quizList">
+                    <!-- Quiz items will be populated by JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Management Section -->
+    <section class="user-management" id="users">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-users"></i> User Management</h2>
+                <p class="section-subtitle">Manage user accounts and permissions</p>
+            </div>
+            
+            <div class="user-controls">
+                <div class="search-controls">
+                    <input type="text" id="userSearch" placeholder="Search users..." />
+                    <select id="roleFilter">
+                        <option value="all">All Roles</option>
+                        <option value="admin">Admin</option>
+                        <option value="moderator">Moderator</option>
+                        <option value="user">User</option>
+                    </select>
+                </div>
+                
+                <div class="action-controls">
+                    <button class="btn btn-primary" id="addUserBtn">
+                        <i class="fas fa-user-plus"></i> Add User
+                    </button>
+                </div>
+            </div>
+            
+            <div class="user-list-container">
+                <div class="user-list-header">
+                    <div class="user-list-col">User</div>
+                    <div class="user-list-col">Role</div>
+                    <div class="user-list-col">Joined</div>
+                    <div class="user-list-col">Status</div>
+                    <div class="user-list-col">Actions</div>
+                </div>
+                
+                <div class="user-list" id="userList">
+                    <!-- User items will be populated by JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analytics Section -->
+    <section class="admin-analytics">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-chart-line"></i> System Analytics</h2>
+                <p class="section-subtitle">Monitor system performance and usage</p>
+            </div>
+            
+            <div class="analytics-grid">
+                <div class="analytics-card">
+                    <h3>Quiz Generation</h3>
+                    <div class="analytics-content">
+                        <div class="stat">
+                            <span class="stat-label">Today</span>
+                            <span class="stat-value">00</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">This Week</span>
+                            <span class="stat-value">00</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">This Month</span>
+                            <span class="stat-value">00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="analytics-card">
+                    <h3>User Engagement</h3>
+                    <div class="analytics-content">
+                        <div class="stat">
+                            <span class="stat-label">Active Users</span>
+                            <span class="stat-value">00</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Avg. Session</span>
+                            <span class="stat-value">0m 0s</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Completion Rate</span>
+                            <span class="stat-value">0%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="analytics-card">
+                    <h3>Content Quality</h3>
+                    <div class="analytics-content">
+                        <div class="stat">
+                            <span class="stat-label">Approved</span>
+                            <span class="stat-value">94%</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Rejected</span>
+                            <span class="stat-value">6%</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Avg. Review Time</span>
+                            <span class="stat-value">2m 15s</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="ai-footer">
+        <div class="container">
+            <p>&copy; 2025 RedStone AI Hub Admin Panel. Powered by Intelligent Automation.</p>
+        </div>
+    </footer>
+
+    <!-- Quiz Review Modal -->
+    <div class="modal" id="quizReviewModal">
+        <div class="modal-overlay" id="quizReviewOverlay"></div>
+        <div class="modal-content quiz-review-modal">
+            <button class="modal-close" id="closeQuizReviewModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-header">
+                <h2>Review Quiz Question</h2>
+            </div>
+            
+            <div class="quiz-review-content" id="quizReviewContent">
+                <!-- Quiz review content will be populated by JS -->
+            </div>
+            
+            <div class="quiz-review-actions">
+                <button class="btn btn-secondary" id="rejectQuestionBtn">
+                    <i class="fas fa-times"></i> Reject
+                </button>
+                <button class="btn btn-primary" id="approveQuestionBtn">
+                    <i class="fas fa-check"></i> Approve
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="admin-panel.js"></script>
+</body>
+</html>

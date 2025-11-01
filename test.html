@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedStone Vision Deck - Setup Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ff4444, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .status {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #00ffff;
+        }
+        
+        .status h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #00ffff;
+        }
+        
+        .check-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+        }
+        
+        .check-item .icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 1rem;
+            font-size: 1.25rem;
+        }
+        
+        .success { color: #44ff44; }
+        .error { color: #ff4444; }
+        .warning { color: #ffff44; }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #ff4444, #ff6666);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin: 1rem 0.5rem 1rem 0;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        code {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #00ffff;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #00ffff;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔴 RedStone Vision Deck</h1>
+        <p style="font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.9;">Setup Verification</p>
+        
+        <div class="status">
+            <h2>File Structure</h2>
+            <div id="file-checks">
+                <div class="check-item">
+                    <span class="icon loading"></span>
+                    <span>Checking files...</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="status">
+            <h2>Data Files</h2>
+            <div id="data-checks">
+                <div class="check-item">
+                    <span class="icon loading"></span>
+                    <span>Loading data files...</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="status">
+            <h2>Next Steps</h2>
+            <p style="margin-bottom: 1rem;">If all checks pass, you're ready to launch the site!</p>
+            <a href="index.html" class="btn">🚀 Launch RedStone Vision Deck</a>
+            <a href="README.md" class="btn btn-secondary" target="_blank">📖 Read Documentation</a>
+        </div>
+        
+        <div class="status">
+            <h2>Quick Commands</h2>
+            <p style="margin-bottom: 1rem;">Start a local server with one of these:</p>
+            <code>python -m http.server 8000</code><br><br>
+            <code>npx http-server -p 8000</code><br><br>
+            <code>php -S localhost:8000</code>
+        </div>
+    </div>
+    
+    <script>
+        // Check if files exist by trying to load them
+        async function checkFiles() {
+            const files = [
+                { path: 'index.html', name: 'Main HTML' },
+                { path: 'styles.css', name: 'Stylesheet' },
+                { path: 'main.js', name: 'Core JavaScript' },
+                { path: 'roadmap.js', name: 'Roadmap Module' },
+                { path: 'gallery.js', name: 'Gallery Module' },
+                { path: 'video.js', name: 'Video Module' },
+                { path: 'map.js', name: 'Map Module' }
+            ];
+            
+            const container = document.getElementById('file-checks');
+            container.innerHTML = '';
+            
+            for (const file of files) {
+                try {
+                    const response = await fetch(file.path, { method: 'HEAD' });
+                    const success = response.ok;
+                    
+                    container.innerHTML += `
+                        <div class="check-item">
+                            <span class="icon ${success ? 'success' : 'error'}">
+                                ${success ? '✓' : '✗'}
+                            </span>
+                            <span>${file.name}: ${success ? 'Found' : 'Missing'}</span>
+                        </div>
+                    `;
+                } catch (error) {
+                    container.innerHTML += `
+                        <div class="check-item">
+                            <span class="icon error">✗</span>
+                            <span>${file.name}: Error checking</span>
+                        </div>
+                    `;
+                }
+            }
+        }
+        
+        // Check data files
+        async function checkData() {
+            const dataFiles = [
+                { path: 'data/roadmap.json', name: 'Roadmap Data', key: 'id' },
+                { path: 'data/gallery.json', name: 'Gallery Data', key: 'id' },
+                { path: 'data/videos.json', name: 'Video Data', key: 'id' },
+                { path: 'data/partners.json', name: 'Partner Data', key: 'id' }
+            ];
+            
+            const container = document.getElementById('data-checks');
+            container.innerHTML = '';
+            
+            for (const file of dataFiles) {
+                try {
+                    const response = await fetch(file.path);
+                    const data = await response.json();
+                    const count = Array.isArray(data) ? data.length : 0;
+                    const success = count > 0 && data[0][file.key];
+                    
+                    container.innerHTML += `
+                        <div class="check-item">
+                            <span class="icon ${success ? 'success' : 'warning'}">
+                                ${success ? '✓' : '⚠'}
+                            </span>
+                            <span>${file.name}: ${count} items loaded</span>
+                        </div>
+                    `;
+                } catch (error) {
+                    container.innerHTML += `
+                        <div class="check-item">
+                            <span class="icon error">✗</span>
+                            <span>${file.name}: Failed to load</span>
+                        </div>
+                    `;
+                }
+            }
+        }
+        
+        // Run checks
+        window.addEventListener('DOMContentLoaded', () => {
+            checkFiles();
+            checkData();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{
+  "name": "redstone-vision-deck",
+  "version": "1.0.0",
+  "description": "RedStone Vision Deck - Future & Innovation Portal",
+  "scripts": {
+    "start": "npx http-server -p 8000 -o",
+    "dev": "npx http-server -p 8000 -o",
+    "test": "npx http-server -p 8000 -o test.html",
+    "serve": "npx http-server -p 8000",
+    "ai-hub": "npx http-server -p 8000 -o ai-hub.html",
+    "dashboard": "npx http-server -p 8000 -o dashboard.html",
+    "admin": "npx http-server -p 8000 -o admin-panel.html",
+    "communication": "npx http-server -p 8000 -o communication-center.html"
+  },
+  "keywords": [
+    "redstone",
+    "oracle",
+    "blockchain",
+    "defi",
+    "web3",
+    "microsite"
+  ],
+  "author": "RedStone",
+  "license": "UNLICENSED",
+  "devDependencies": {},
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions"
+  ]
+}

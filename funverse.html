@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RedStone Funverse Interactive community engagement platform with quizzes, games, and rewards">
+    <title>RedStone Funverse | Learn, Play, Earn</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="logo 1.png">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="funverse.css">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="funverse-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="logo 1.png" alt="RedStone" class="nav-logo">
+                <span class="nav-title">RedStone <span class="funverse-text">Funverse</span></span>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="#" class="nav-link" id="backToMainLink">
+                    <i class="fas fa-arrow-left"></i> Back to Main Portal
+                </a>
+                <a href="#quiz" class="nav-link"><i class="fas fa-brain"></i> Quiz</a>
+                <a href="#memes" class="nav-link"><i class="fas fa-image"></i> Memes</a>
+                <a href="#leaderboard" class="nav-link"><i class="fas fa-trophy"></i> Leaderboard</a>
+                <a href="communication-center.html" class="nav-link"><i class="fas fa-comments"></i> Communication Hub</a>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="user-xp" id="userXP" style="display: none;">
+                    <i class="fas fa-star"></i>
+                    <span id="xpDisplay">0 XP</span>
+                </div>
+                <button class="btn-login" id="loginBtn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                <button class="btn-profile" id="profileBtn" style="display: none;">
+                    <i class="fas fa-user"></i>
+                    <span id="usernameDisplay"></span>
+                </button>
+                <button class="btn-signout" id="signoutBtn" style="display: none;">
+                    <i class="fas fa-sign-out-alt"></i> Sign Out
+                </button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-funverse">
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to <span class="gradient-text">RedStone Funverse</span></h1>
+            <p class="hero-subtitle">Master RedStone oracles through advanced interactive quizzes, games, and community challenges</p>
+            
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalPlayers">0</div>
+                    <div class="stat-label">Players</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalQuizzes">70</div>
+                    <div class="stat-label">Quizzes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalMemes">0</div>
+                    <div class="stat-label">Memes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">XP Earned</div>
+                </div>
+            </div>
+            
+            <div class="hero-cta">
+                <a href="#quiz" class="btn btn-primary">
+                    <i class="fas fa-play"></i> Start Quiz
+                </a>
+            </div>
+        </div>
+        
+        <div class="hero-decoration">
+            <div class="floating-orb orb-1"></div>
+            <div class="floating-orb orb-2"></div>
+            <div class="floating-orb orb-3"></div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz" class="section-quiz">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-brain"></i> RedStone Advanced Oracle Quiz</h2>
+                <p class="section-subtitle">Test your expert knowledge about RedStone oracles and earn point</p>
+            </div>
+            
+            <div class="quiz-container" id="quizContainer">
+                <div class="quiz-welcome" id="quizWelcome">
+                    <div class="quiz-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>RedStone Quiz</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Test your knowledge about RedStone Oracle the modular oracle powering 110+ blockchains</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.95rem; font-weight: 600; color: var(--color-primary);">🎯 70 Questions | 1 point per correct answer | Unlimited attempts</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #ff6b6b; font-weight: 600;">Expert knowledge of RedStone's architecture required!</p>
+                    <button class="btn btn-primary btn-lg" id="startQuizBtn">
+                        <i class="fas fa-play"></i> Start Quiz
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meme Portal Section (Updated) -->
+    <section id="memes" class="section-memes">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-image"></i> Meme Portal</h2>
+                <p class="section-subtitle">Share your best RedStone memes and get featured</p>
+            </div>
+
+            <!-- Meme Categories -->
+            <div class="meme-categories">
+                <div class="category-filter">
+                    <button class="filter-btn active" data-filter="all">All Memes</button>
+                    <button class="filter-btn" data-filter="RedStone">RedStone</button>
+                    <button class="filter-btn" data-filter="Oracles">Oracles</button>
+                    <button class="filter-btn" data-filter="DeFi">DeFi</button>
+                    <button class="filter-btn" data-filter="Community">Community</button>
+                </div>
+            </div>
+
+            <!-- User Upload Form -->
+            <div class="meme-upload-form">
+                <div class="upload-header">
+                    <h3><i class="fas fa-upload"></i> Submit Your Meme</h3>
+                    <p>Share your creativity with the RedStone community</p>
+                </div>
+                <form id="memeUploadForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="creatorName">Your Name</label>
+                            <input type="text" id="creatorName" name="creatorName" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="memeCategory">Category</label>
+                            <select id="memeCategory" name="memeCategory" required>
+                                <option value="">Select a category</option>
+                                <option value="RedStone">RedStone</option>
+                                <option value="Oracles">Oracles</option>
+                                <option value="DeFi">DeFi</option>
+                                <option value="Community">Community</option>
+                                <option value="Humor">Humor</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="memeImage">Upload Meme Image</label>
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="memeImage" name="memeImage" accept="image/*" required>
+                            <label for="memeImage" class="file-upload-label">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Choose an image file</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="memeCaption">Caption</label>
+                        <textarea id="memeCaption" name="memeCaption" placeholder="Write a caption for your meme" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="uploadMemeBtn">
+                        <i class="fas fa-paper-plane"></i> Submit Meme
+                    </button>
+                </form>
+            </div>
+
+            <!-- Featured Memes Section -->
+            <div class="featured-memes-section">
+                <div class="section-header-small">
+                    <h3><i class="fas fa-star"></i> Featured Memes</h3>
+                    <p>Top memes selected by our community</p>
+                </div>
+                <div class="meme-grid featured-memes-grid" id="featuredMemeGrid">
+                    <!-- Featured memes will be populated here -->
+                </div>
+            </div>
+
+            <!-- All Memes Section -->
+            <div class="all-memes-section">
+                <div class="section-header-small">
+                    <h3><i class="fas fa-images"></i> Community Memes</h3>
+                    <p>Latest submissions from our community</p>
+                </div>
+                <div class="meme-grid" id="memeGrid">
+                    <!-- All memes will be populated here -->
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="load-more-container">
+                <button class="btn btn-secondary" id="loadMoreMemes">
+                    <i class="fas fa-sync"></i> Load More Memes
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section id="leaderboard" class="section-leaderboard">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-trophy"></i> Leaderboard</h2>
+                <p class="section-subtitle">Top players in the RedStone Funverse</p>
+            </div>
+            
+            <div class="leaderboard-tabs">
+                <button class="tab-btn active" data-tab="weekly">Weekly</button>
+                <button class="tab-btn" data-tab="monthly">Monthly</button>
+                <button class="tab-btn" data-tab="alltime">All Time</button>
+            </div>
+            
+            <div class="leaderboard-table">
+                <div class="table-header">
+                    <div class="col-rank">Rank</div>
+                    <div class="col-player">Player</div>
+                    <div class="col-xp">point</div>
+                    <div class="col-badges">Badges</div>
+                </div>
+                
+                <div class="table-body" id="leaderboardBody">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-overlay" id="loginOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="closeLoginModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-header">
+                <h2>Join RedStone Funverse</h2>
+                <p>Login to track your progress and compete</p>
+            </div>
+            
+            <div class="login-options">
+                <button class="login-btn twitter-login">
+                    <i class="fab fa-twitter"></i>
+                    Continue with Twitter
+                </button>
+                <button class="login-btn discord-login">
+                    <i class="fab fa-discord"></i>
+                    Continue with Discord
+                </button>
+                <button class="login-btn email-login">
+                    <i class="fas fa-envelope"></i>
+                    Continue with Email
+                </button>
+            </div>
+            
+            <div class="login-demo">
+                <p>Demo Mode Available</p>
+                <button class="btn btn-outline" id="demoLoginBtn">
+                    <i class="fas fa-user-secret"></i> Try as Guest
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="funverse.js"></script>
+</body>
+</html>
+
+

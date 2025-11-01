@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RedStone AI Hub Dashboard Intelligent Interaction & Personalization Engine">
+    <title>RedStone AI Hub Dashboard</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="logo 1.png">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ai-hub.css">
+    <link rel="stylesheet" href="dashboard.css">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="dashboard-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="logo 1.png" alt="RedStone" class="nav-logo">
+                <span class="nav-title">RedStone <span class="dashboard-text">Dashboard</span></span>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-arrow-left"></i> Back to Main Portal
+                </a>
+                <a href="#analytics" class="nav-link"><i class="fas fa-chart-line"></i> Analytics</a>
+                <a href="#portfolio" class="nav-link"><i class="fas fa-coins"></i> Portfolio</a>
+                <a href="#alerts" class="nav-link"><i class="fas fa-bell"></i> Alerts</a>
+                <a href="communication-center.html" class="nav-link"><i class="fas fa-comments"></i> Communication Hub</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-ai">
+        <div class="hero-content">
+            <h1 class="hero-title">AI Hub <span class="gradient-text">Dashboard</span></h1>
+            <p class="hero-subtitle">Monitor and manage your AI-powered RedStone experience</p>
+        </div>
+    </section>
+
+    <!-- Dashboard Stats -->
+    <section class="dashboard-stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="totalQuizzes">0</h3>
+                        <p>Total Quizzes</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="totalChats">0</h3>
+                        <p>Chat Sessions</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="totalTutorials">0</h3>
+                        <p>Tutorials Completed</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="totalXP">0</h3>
+                        <p>Total XP Earned</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Activity -->
+    <section class="recent-activity">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-history"></i> Recent Activity</h2>
+            </div>
+            
+            <div class="activity-container">
+                <div class="activity-list" id="activityList">
+                    <!-- Activities will be populated by JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Quiz Management -->
+    <section class="quiz-management">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-question-circle"></i> AI Quiz Management</h2>
+            </div>
+            
+            <div class="management-container">
+                <div class="management-card">
+                    <h3>Generate New Quiz</h3>
+                    <p>Create a new AI-generated quiz based on the latest RedStone documentation.</p>
+                    <button class="btn btn-primary" id="generateQuizBtn">
+                        <i class="fas fa-sparkles"></i> Generate Quiz
+                    </button>
+                </div>
+                
+                <div class="management-card">
+                    <h3>View Quiz History</h3>
+                    <p>Review previously generated quizzes and user performance.</p>
+                    <button class="btn btn-secondary" id="viewHistoryBtn">
+                        <i class="fas fa-history"></i> View History
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stoney Assistant Settings -->
+    <section class="assistant-settings">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-robot"></i> Stoney Assistant Settings</h2>
+            </div>
+            
+            <div class="settings-container">
+                <div class="setting-item">
+                    <h3>Knowledge Base</h3>
+                    <p>Update Stoney's knowledge with the latest RedStone documentation.</p>
+                    <button class="btn btn-primary" id="updateKnowledgeBtn">
+                        <i class="fas fa-sync"></i> Update Knowledge Base
+                    </button>
+                </div>
+                
+                <div class="setting-item">
+                    <h3>Conversation History</h3>
+                    <p>Manage and review conversation history with users.</p>
+                    <button class="btn btn-secondary" id="viewHistoryBtn2">
+                        <i class="fas fa-history"></i> View Conversations
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tutorial Assistant Settings -->
+    <section class="tutorial-settings">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Tutorial Assistant Settings</h2>
+            </div>
+            
+            <div class="settings-container">
+                <div class="setting-item">
+                    <h3>Code Examples Library</h3>
+                    <p>Manage the library of code examples used for tutorials.</p>
+                    <button class="btn btn-primary" id="manageExamplesBtn">
+                        <i class="fas fa-book"></i> Manage Examples
+                    </button>
+                </div>
+                
+                <div class="setting-item">
+                    <h3>Tutorial Analytics</h3>
+                    <p>View analytics on tutorial usage and effectiveness.</p>
+                    <button class="btn btn-secondary" id="viewAnalyticsBtn">
+                        <i class="fas fa-chart-bar"></i> View Analytics
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="ai-footer">
+        <div class="container">
+            <p>&copy; 2025 RedStone AI Hub Dashboard. Powered by Intelligent Automation.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="dashboard.js"></script>
+</body>
+</html>

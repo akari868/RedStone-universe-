@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RedStone Communication & Engagement Center - Community transparency, live updates, and recognition">
+    <title>RedStone Communication Hub | Community Transparency & Live Updates</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="logo 1.png">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="communication-center.css">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Theme Toggle -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light theme">
+        <svg class="sun-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="2"/>
+            <path d="M10 2V4M10 16V18M18 10H16M4 10H2M15.66 15.66L14.24 14.24M5.76 5.76L4.34 4.34M15.66 4.34L14.24 5.76M5.76 14.24L4.34 15.66" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <svg class="moon-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17 10.5C16.1 13.5 13.4 15.7 10.1 15.7C6.2 15.7 3 12.5 3 8.6C3 5.3 5.2 2.6 8.2 1.7C8 2.1 7.9 2.6 7.9 3.1C7.9 5.8 10.1 8 12.8 8C13.3 8 13.8 7.9 14.2 7.7C14.9 8.9 15.3 10.3 15.3 11.8C15.3 13.3 14.8 14.7 14 15.9C15.7 14.8 17 12.8 17 10.5Z" fill="currentColor"/>
+        </svg>
+    </button>
+
+    <!-- Header -->
+    <header class="communication-header">
+        <div class="container">
+            <div class="header-content">
+                <!-- ✅ Added Main Portal Icon -->
+                <a href="index.html" class="main-portal-link" title="Go to Main Portal" style="margin-right: 15px; font-size: 1.3rem; color: var(--accent-color);">
+                    <i class="fas fa-home"></i>
+                </a>
+
+                <div class="header-brand">
+                    <img src="logo 1.png" alt="RedStone" class="header-logo">
+                    <div>
+                        <h1 class="header-title">RedStone Communication Hub</h1>
+                        <p class="header-subtitle">Real time updates, community engagement, and ecosystem transparency</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <div class="live-indicator">
+                        <span class="pulse"></span>
+                        <span class="live-text">Live Updates</span>
+                    </div>
+                    <div class="next-update-timer">
+                        <i class="fas fa-clock"></i>
+                        <span id="nextUpdateTimer">Next update in: 00:00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Announcement Ticker -->
+        <section class="announcement-ticker-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-bullhorn"></i> Live Announcements</h2>
+                    <p class="section-subtitle">Latest updates from RedStone ecosystem</p>
+                </div>
+                
+                <div class="ticker-container">
+                    <div class="ticker-wrapper" id="tickerWrapper">
+                        <div class="ticker-content" id="tickerContent">
+                            <!-- Ticker items will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    <div class="ticker-controls">
+                        <button id="pauseTicker" class="ticker-control-btn" aria-label="Pause ticker">
+                            <i class="fas fa-pause"></i>
+                        </button>
+                        <button id="playTicker" class="ticker-control-btn" aria-label="Play ticker" style="display: none;">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter & Update Center -->
+        <section class="newsletter-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-envelope"></i> Newsletter & Weekly Digest</h2>
+                    <p class="section-subtitle">Stay informed with RedStone ecosystem updates</p>
+                </div>
+                
+                <div class="newsletter-grid">
+                    <div class="subscription-form">
+                        <h3>Subscribe to RedStone Updates</h3>
+                        <form id="newsletterForm">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required placeholder="your@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Full Name (Optional)</label>
+                                <input type="text" id="name" name="name" placeholder="Your Name">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <i class="fas fa-paper-plane"></i> Subscribe
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="weekly-digest">
+                        <h3><i class="fas fa-calendar-week"></i> Week in RedStone 🔴</h3>
+                        <div class="digest-timeline" id="digestTimeline">
+                            <!-- Timeline items will be populated by JavaScript -->
+                        </div>
+                        <div class="digest-summary">
+                            <h4>AI Summary</h4>
+                            <p id="weeklySummary">Loading weekly summary...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Governance Polls -->
+        <section class="polls-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-vote-yea"></i> Governance Polls</h2>
+                    <p class="section-subtitle">Participate in ecosystem decisions</p>
+                </div>
+                
+                <div class="polls-container" id="pollsContainer">
+                    <!-- Polls will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Stoney Bot Says -->
+        <section class="stoney-bot-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-robot"></i> Stoney Bot Says</h2>
+                    <p class="section-subtitle">Daily RedStone facts and insights</p>
+                </div>
+                
+                <div class="stoney-bot-card">
+                    <div class="bot-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="bot-content">
+                        <p id="stoneyMessage">Loading RedStone fact...</p>
+                        <button id="refreshStoney" class="btn btn-secondary">
+                            <i class="fas fa-sync-alt"></i> New Fact
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="communication-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="logo 1.png" alt="RedStone" class="footer-logo">
+                    <p>RedStone Communication Hub Connecting the ecosystem</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Main Portal</a>
+                    <a href="funverse.html">FunVerse</a>
+                    <a href="ai-hub.html">AI Hub</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RedStone. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="ambassadorModal" class="modal" role="dialog" aria-labelledby="ambassador-modal-title" aria-modal="true">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <div id="ambassadorModalBody">
+                <!-- Populated dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <div id="pollModal" class="modal" role="dialog" aria-labelledby="poll-modal-title" aria-modal="true">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <div id="pollModalBody">
+                <!-- Populated dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <div id="successModal" class="modal" role="dialog" aria-labelledby="success-modal-title" aria-modal="true">
+        <div class="modal-content success-modal">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <div class="success-content">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Success!</h3>
+                <p id="successMessage">Your action was completed successfully.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
+    <script src="communication-center.js"></script>
+
+    <!-- === THEME TOGGLE FIXED === -->
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const htmlEl = document.documentElement;
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) htmlEl.setAttribute('data-theme', savedTheme);
+
+        // Update icons
+        function updateIcons(theme) {
+            const sun = themeToggleBtn.querySelector('.sun-icon');
+            const moon = themeToggleBtn.querySelector('.moon-icon');
+            if (theme === 'dark') {
+                sun.style.display = 'inline';
+                moon.style.display = 'none';
+            } else {
+                sun.style.display = 'none';
+                moon.style.display = 'inline';
+            }
+        }
+
+        updateIcons(htmlEl.getAttribute('data-theme'));
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlEl.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlEl.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcons(newTheme);
+        });
+    </script>
+</body>
+</html>
